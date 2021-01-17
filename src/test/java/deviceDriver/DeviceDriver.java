@@ -32,9 +32,9 @@ public class DeviceDriver {
             caps.setCapability("deviceName", "device");
             caps.setCapability("udid", "emulator-5554"); //Give Device ID of your mobile phone
             caps.setCapability("platformName", "Android");
-            caps.setCapability("platformVersion", "8.0");
-            caps.setCapability("appPackage", "com.staircase3.opensignal");
-             caps.setCapability("appActivity", "com.staircase3.opensignal.activities.MainActivity");
+            caps.setCapability("platformVersion", "11.0");
+            caps.setCapability("appPackage", "com.sensynehealth.hospitals");
+             caps.setCapability("appActivity", "com.sensynehealth.hospitals.activities.MainActivity");
             caps.setCapability("noReset", "false");
             caps.setCapability("autoGrantPermissions", "true");
             caps.setCapability("automationName", "uiautomator2");
@@ -67,17 +67,20 @@ public class DeviceDriver {
             caps.setCapability("udid", "5200ca1342bbc5fb"); //Give Device ID of your mobile phone
             caps.setCapability("platformName", "Android");
             caps.setCapability("platformVersion", "8.0");
-            caps.setCapability("appPackage", "com.staircase3.opensignal");
-            caps.setCapability("appActivity", "com.staircase3.opensignal.activities.MainActivity");
+            caps.setCapability("appPackage", "com.sensynehealth.hospitals");
+            caps.setCapability("appActivity", "com.sensynehealth.hospitals.activities.MainActivity");
             caps.setCapability("noReset", "false");
             caps.setCapability("autoGrantPermissions", "true");
             caps.setCapability("automationName", "uiautomator2");
 
 
             try {
-                samsungS105GDriver = new AndroidDriver<MobileElement>(caps);
+                samsungS105GDriver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), caps);
                 samsungS105GDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            } finally {
+            } catch (MalformedURLException e) {
+                System.out.println(e.getMessage());
+            }
+            finally {
                 Runtime.getRuntime().addShutdownHook(
                         new Thread(new DriverCleanup()));
             }
@@ -89,7 +92,7 @@ public class DeviceDriver {
 
 
     public synchronized static AppiumDriver<MobileElement> getPixel4ADriver() {
-        if (samsungS105GDriver == null) {
+        if (pixel4ADriver == null) {
 
             //Set the Desired Capabilities
             DesiredCapabilities caps = new DesiredCapabilities();
@@ -97,24 +100,27 @@ public class DeviceDriver {
             caps.setCapability("udid", "5200ca1342bbc5fb"); //Give Device ID of your mobile phone
             caps.setCapability("platformName", "Android");
             caps.setCapability("platformVersion", "8.0");
-            caps.setCapability("appPackage", "com.staircase3.opensignal");
-            caps.setCapability("appActivity", "com.staircase3.opensignal.activities.MainActivity");
+            caps.setCapability("appPackage", "com.sensynehealth.hospitals");
+            caps.setCapability("appActivity", "com.sensynehealth.hospitals.activities.MainActivity");
             caps.setCapability("noReset", "false");
             caps.setCapability("autoGrantPermissions", "true");
             caps.setCapability("automationName", "uiautomator2");
 
 
             try {
-                samsungS105GDriver = new AndroidDriver<MobileElement>(caps);
-                samsungS105GDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            } finally {
+                pixel4ADriver= new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), caps);
+                pixel4ADriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            } catch (MalformedURLException e) {
+                System.out.println(e.getMessage());
+            }
+            finally {
                 Runtime.getRuntime().addShutdownHook(
                         new Thread(new DriverCleanup()));
             }
 
         }
 
-        return samsungS105GDriver;
+        return pixel4ADriver;
     }
 
     public synchronized static AppiumDriver<MobileElement> getIosDriver() {
@@ -124,7 +130,6 @@ public class DeviceDriver {
     private static class DriverCleanup implements Runnable {
         public void run() {
             appiumServer.stop();
-            //  androidDriver.removeApp("com.staircase3.opensignal");
             System.out.println("Closing the Driver");
             close();
 
