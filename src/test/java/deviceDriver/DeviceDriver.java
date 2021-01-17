@@ -34,7 +34,7 @@ public class DeviceDriver {
             caps.setCapability("platformName", "Android");
             caps.setCapability("platformVersion", "11.0");
             caps.setCapability("appPackage", "com.sensynehealth.hospitals");
-             caps.setCapability("appActivity", "com.sensynehealth.hospitals.activities.MainActivity");
+             caps.setCapability("appActivity", "com.sensynehealth.hospitals.MainActivity");
             caps.setCapability("noReset", "false");
             caps.setCapability("autoGrantPermissions", "true");
             caps.setCapability("automationName", "uiautomator2");
@@ -68,7 +68,7 @@ public class DeviceDriver {
             caps.setCapability("platformName", "Android");
             caps.setCapability("platformVersion", "8.0");
             caps.setCapability("appPackage", "com.sensynehealth.hospitals");
-            caps.setCapability("appActivity", "com.sensynehealth.hospitals.activities.MainActivity");
+            caps.setCapability("appActivity", "com.sensynehealth.hospitals.MainActivity");
             caps.setCapability("noReset", "false");
             caps.setCapability("autoGrantPermissions", "true");
             caps.setCapability("automationName", "uiautomator2");
@@ -101,7 +101,7 @@ public class DeviceDriver {
             caps.setCapability("platformName", "Android");
             caps.setCapability("platformVersion", "8.0");
             caps.setCapability("appPackage", "com.sensynehealth.hospitals");
-            caps.setCapability("appActivity", "com.sensynehealth.hospitals.activities.MainActivity");
+            caps.setCapability("appActivity", "com.sensynehealth.hospitals.MainActivity");
             caps.setCapability("noReset", "false");
             caps.setCapability("autoGrantPermissions", "true");
             caps.setCapability("automationName", "uiautomator2");

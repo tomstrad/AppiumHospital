@@ -1,4 +1,4 @@
-package pageObjects;
+package techtest.pageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
