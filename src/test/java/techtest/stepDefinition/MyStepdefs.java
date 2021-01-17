@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import techtest.pageObjects.HospitalsPage;
 import techtest.pageView.HospitalsPageView;
 
 import static org.junit.Assert.assertEquals;
@@ -30,5 +31,19 @@ public class MyStepdefs {
     public void iSeeASearchBar() {
         HospitalsPageView.getHospitalsPages().forEach(hospitalsPage -> assertTrue(hospitalsPage.isSearchBarVisible()));
         HospitalsPageView.getHospitalsPages().forEach(hospitalsPage -> assertTrue(hospitalsPage.isSearchBarUsable()));
+    }
+
+    @When("When I click on it")
+    public void whenIClickOnIt() {
+        HospitalsPageView.getHospitalsPages().forEach(HospitalsPage::clickSearchButton);
+        HospitalsPageView.getHospitalsPages().forEach(hospitalsPage -> assertTrue(hospitalsPage.isSearchBoxTextEntryVisible()));
+
+    }
+
+    @Then("I can enter text")
+    public void iCanEnterText() {
+        HospitalsPageView.getHospitalsPages().forEach(hospitalsPage -> hospitalsPage.enterSearchText("Test Text"));
+        HospitalsPageView.getHospitalsPages().forEach(hospitalsPage -> assertEquals("Test Text", hospitalsPage.getSearchText()));
+
     }
 }

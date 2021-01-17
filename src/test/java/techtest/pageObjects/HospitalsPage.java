@@ -14,6 +14,8 @@ public class HospitalsPage extends techtest.pageObjects.BasePage {
     private By hospitalName = By.id("com.sensynehealth.hospitals:id/hospitalName");
     private By hospitalType = By.id("com.sensynehealth.hospitals:id/hospitalType");
     private By searchBar = By.id("com.sensynehealth.hospitals:id/search_bar");
+    private By editableSearchBar = By.id("com.sensynehealth.hospitals:id/search_src_text");
+    private By searchButton = By.id("com.sensynehealth.hospitals:id/search_button");
 
 
 
@@ -56,6 +58,22 @@ public class HospitalsPage extends techtest.pageObjects.BasePage {
 
     public boolean isSearchBarUsable(){
         return isElementEnabled(searchBar);
+    }
+
+    public void clickSearchButton(){
+        appiumDriver.findElement(searchButton).click();
+    }
+
+    public boolean isSearchBoxTextEntryVisible(){
+        return isElementDisplayed(editableSearchBar);
+    }
+
+    public void enterSearchText(String text){
+        appiumDriver.findElement(editableSearchBar).sendKeys(text);
+    }
+
+    public String getSearchText(){
+        return appiumDriver.findElement(editableSearchBar).getText();
     }
 
 }
