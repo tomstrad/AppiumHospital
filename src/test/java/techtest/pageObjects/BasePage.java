@@ -26,14 +26,4 @@ public abstract class BasePage {
         return !elements.isEmpty() && elements.get(0).isSelected();
     }
 
-    void clickView(By element) {
-        List<MobileElement> elements = appiumDriver.findElements(element);
-        if (!elements.isEmpty()) {
-            elements.get(0).click();
-        } else {
-            fail("Element requested to click not found: " + element);
-        }
-    }
-
-
 }

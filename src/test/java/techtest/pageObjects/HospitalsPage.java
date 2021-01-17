@@ -5,6 +5,7 @@ import deviceDriver.DriverType;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class HospitalsPage extends techtest.pageObjects.BasePage {
@@ -16,6 +17,7 @@ public class HospitalsPage extends techtest.pageObjects.BasePage {
     private By searchBar = By.id("com.sensynehealth.hospitals:id/search_bar");
     private By editableSearchBar = By.id("com.sensynehealth.hospitals:id/search_src_text");
     private By searchButton = By.id("com.sensynehealth.hospitals:id/search_button");
+    private By searchClose = By.id("com.sensynehealth.hospitals:id/search_close_btn");
 
 
 
@@ -76,4 +78,29 @@ public class HospitalsPage extends techtest.pageObjects.BasePage {
         return appiumDriver.findElement(editableSearchBar).getText();
     }
 
+    public boolean isTypeVisible(){
+        return isElementDisplayed(hospitalType);
+    }
+
+    public boolean isSearchClearVisible(){
+        return isElementDisplayed(searchClose);
+    }
+
+    public void clickClearSearch(){
+        appiumDriver.findElement(searchClose).click();
+    }
+
+    public String getFirstResultHospitalName(){
+        return appiumDriver.findElements(hospitalName).get(0).getText();
+    }
+
+    public boolean checkAllNamesForString(String str){
+        boolean retVal = false;
+        List<MobileElement> nameList = appiumDriver.findElements(hospitalName);
+        for(MobileElement me : nameList) {
+            System.out.println(me.getText());
+            retVal = me.getText().contains(str);
+        }
+        return retVal;
+    }
 }

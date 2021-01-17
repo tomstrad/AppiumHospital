@@ -45,7 +45,7 @@ public class DeviceDriver {
 
                 androidDriver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), caps);
                 System.out.println("driver created");
-                androidDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+                androidDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
             } catch (MalformedURLException e) {
                 System.out.println(e.getMessage());
@@ -64,9 +64,9 @@ public class DeviceDriver {
             //Set the Desired Capabilities
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability("deviceName", "device");
-            caps.setCapability("udid", "5200ca1342bbc5fb"); //Give Device ID of your mobile phone
+            caps.setCapability("udid", "R3CM50C4NDJ"); //Give Device ID of your mobile phone
             caps.setCapability("platformName", "Android");
-            caps.setCapability("platformVersion", "8.0");
+            caps.setCapability("platformVersion", "10.0");
             caps.setCapability("appPackage", "com.sensynehealth.hospitals");
             caps.setCapability("appActivity", "com.sensynehealth.hospitals.MainActivity");
             caps.setCapability("noReset", "false");
@@ -76,7 +76,7 @@ public class DeviceDriver {
 
             try {
                 samsungS105GDriver = new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), caps);
-                samsungS105GDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                samsungS105GDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             } catch (MalformedURLException e) {
                 System.out.println(e.getMessage());
             }
@@ -109,7 +109,7 @@ public class DeviceDriver {
 
             try {
                 pixel4ADriver= new AndroidDriver<MobileElement>(new URL("http://0.0.0.0:4723/wd/hub"), caps);
-                pixel4ADriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                pixel4ADriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             } catch (MalformedURLException e) {
                 System.out.println(e.getMessage());
             }
@@ -131,22 +131,10 @@ public class DeviceDriver {
         public void run() {
             appiumServer.stop();
             System.out.println("Closing the Driver");
-            close();
+
 
         }
-
-
-        public static void close() {
-            try {
-
-                getAndroidDriver().quit();
-                androidDriver = null;
-                System.out.println("Closing the browser");
-
-            } catch (UnreachableBrowserException e) {
-                System.out.println("cannot close browser: unreachable browser");
-            }
-        }
+        
 
 
 
