@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 public class DeviceDriver {
 
     private static AppiumDriver<MobileElement> androidDriver;
-    private static AppiumDriver<MobileElement> iosDriver;
     private static AppiumDriver<MobileElement> samsungS105GDriver;
     private static AppiumDriver<MobileElement> pixel4ADriver;
 
@@ -67,7 +66,7 @@ public class DeviceDriver {
             caps.setCapability("deviceName", "device");
             caps.setCapability("udid", "R3CM50C4NDJ"); //Give Device ID of your mobile phone
             caps.setCapability("platformName", "Android");
-            caps.setCapability("platformVersion", "10.0");
+            caps.setCapability("platformVersion", "10.0"); //Update Version
             caps.setCapability("appPackage", "com.sensynehealth.hospitals");
             caps.setCapability("appActivity", "com.sensynehealth.hospitals.MainActivity");
             caps.setCapability("noReset", "false");
@@ -98,9 +97,9 @@ public class DeviceDriver {
             //Set the Desired Capabilities
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability("deviceName", "device");
-            caps.setCapability("udid", "5200ca1342bbc5fb"); //Give Device ID of your mobile phone
+            caps.setCapability("udid", "09011JEC216089"); //Give Device ID of your mobile phone
             caps.setCapability("platformName", "Android");
-            caps.setCapability("platformVersion", "8.0");
+            caps.setCapability("platformVersion", "11.0"); //Update Version
             caps.setCapability("appPackage", "com.sensynehealth.hospitals");
             caps.setCapability("appActivity", "com.sensynehealth.hospitals.MainActivity");
             caps.setCapability("noReset", "false");

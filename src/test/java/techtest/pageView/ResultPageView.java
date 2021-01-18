@@ -10,23 +10,27 @@ public class ResultPageView {
 
     private static ResultPage androidResultPage;
     private static ResultPage s105GResultPage;
-//    private static HospitalsPage pixel4aResultPage;
+    private static ResultPage pixel4aResultPage;
 
     public synchronized static ArrayList<ResultPage> getResultPages(){
         if(androidResultPage == null){
             androidResultPage = new ResultPage(DriverType.ANDROID);
         }
-        if(s105GResultPage ==null){
-            s105GResultPage = new ResultPage(DriverType.ANDROID_SAMSUNG_S105G);
-        }
-//        if(pixel4aHospitalsPage == null){
-//            pixel4aHospitalsPage = new GDPRPage(DriverType.ANDROID_SAMSUNG_J6);
+        //Samsung Code
+//        if(s105GResultPage ==null){
+//            s105GResultPage = new ResultPage(DriverType.ANDROID_SAMSUNG_S105G);
+//        }
+        //Pixel Code
+//        if(pixel4aResultPage == null){
+//            pixel4aResultPage = new ResultPage(DriverType.ANDROID_GOOGLE_PXL4);
 //        }
 
         ArrayList<ResultPage> ResultPages = new ArrayList();
         ResultPages.add(androidResultPage);
-//        HospitalsPages.add(iosGDPRPage);
-        ResultPages.add(s105GResultPage);
+        //Samsung Code
+//        ResultPages.add(s105GResultPage);
+        //Pixel Code
+//        ResultPages.add(pixel4aResultPage);
         return ResultPages;
     }
 }
