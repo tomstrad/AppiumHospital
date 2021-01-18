@@ -103,4 +103,8 @@ public class HospitalsPage extends techtest.pageObjects.BasePage {
         }
         return retVal;
     }
+
+    public void clickFirstItemInList(){
+        appiumDriver.findElement(hospitalName).click();
+    }
 }

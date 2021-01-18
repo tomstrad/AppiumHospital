@@ -6,7 +6,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import techtest.pageObjects.HospitalsPage;
+import techtest.pageObjects.ResultPage;
 import techtest.pageView.HospitalsPageView;
+import techtest.pageView.ResultPageView;
 
 import static org.junit.Assert.*;
 
@@ -132,7 +134,31 @@ public class MyStepdefs {
 
     @After
     public void clearUpSearch(){
-
         HospitalsPageView.getHospitalsPages().forEach(HospitalsPage::clickClearSearch);
+    }
+
+    @When("I click on the first result")
+    public void iClickOnTheFirstResult() {
+        HospitalsPageView.getHospitalsPages().forEach(HospitalsPage::clickFirstItemInList);
+    }
+
+    @Then("I am taken to the results page")
+    public void iAmTakenToTheResultsPage() {
+        ResultPageView.getResultPages().forEach(resultPage -> assertTrue(resultPage.getListSize() == 9));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Hospitals", resultPage.getLineOfText(0)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Name: University Hospital (Coventry)", resultPage.getLineOfText(1)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Subtype: Hospital", resultPage.getLineOfText(2)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Sector: NHS Sector", resultPage.getLineOfText(3)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Address:", resultPage.getLineOfText(4)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Clifford Bridge Road", resultPage.getLineOfText(5)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("CV2 2DX Coventry, Warwickshire", resultPage.getLineOfText(6)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Website: http://www.uhcw.nhs.uk", resultPage.getLineOfText(7)));
+        ResultPageView.getResultPages().forEach(resultPage -> assertEquals("Phone: 024 76964000", resultPage.getLineOfText(8)));
+
+    }
+
+    @And("I can return to the search page")
+    public void iCanReturnToTheSearchPage() {
+        ResultPageView.getResultPages().forEach(ResultPage::goBack);
     }
 }

@@ -53,9 +53,10 @@ public class DeviceDriver {
                 Runtime.getRuntime().addShutdownHook(
                         new Thread(new DriverCleanup()));
             }
-//
+
+//            androidDriver.installApp("resources/app-release.apk");
         }
-//
+
         return androidDriver;
     }
     public synchronized static AppiumDriver<MobileElement> getSamsungS105GDriver() {
@@ -84,7 +85,7 @@ public class DeviceDriver {
                 Runtime.getRuntime().addShutdownHook(
                         new Thread(new DriverCleanup()));
             }
-
+//            samsungS105GDriver.installApp("resources/app-release.apk");
         }
 
         return samsungS105GDriver;
@@ -134,7 +135,7 @@ public class DeviceDriver {
 
 
         }
-        
+
 
 
 
